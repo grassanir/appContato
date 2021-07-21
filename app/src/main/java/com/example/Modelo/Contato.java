@@ -8,6 +8,8 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
 
+import static java.time.LocalDate.of;
+
 public class Contato implements Comparable<Contato> {
     // atributos : definir o estado de um objeto (variáveis), o que o objeto sabe
     private String nome;  // private para garantir o encapsulamento
@@ -20,7 +22,6 @@ public class Contato implements Comparable<Contato> {
     public Contato(String nome) {
         super();  // chama o construtor da super classe
         this.nome = nome;
-
     }
 
     public Contato(String nome, String email) {
@@ -39,12 +40,13 @@ public class Contato implements Comparable<Contato> {
     }
 
     // outra opção de construtor
+
     @RequiresApi(api = Build.VERSION_CODES.O)
     public Contato(String nome, String email, int dia, int mes, int ano) {
         super();
         this.nome = nome;
         this.email = email;
-        this.dataNascimento = LocalDate.of(ano, mes, dia);
+        this.dataNascimento = of(ano, mes, dia);
     }
 
     // os getters e setters funcionam de interface pública para
@@ -58,7 +60,7 @@ public class Contato implements Comparable<Contato> {
     // setters são usados para alterar o valor dos atributos
     public void setNome(String nome) {
         // lógica de negócio que testa o parâmetro antes de atribuir
-        // se não for ok, pode por exemplo lançar um exceção44
+        // se não for ok, pode por exemplo lançar um exceção
         this.nome = nome;
     }
 
@@ -72,7 +74,6 @@ public class Contato implements Comparable<Contato> {
 
     public LocalDate getDataNascimento() {
         return dataNascimento;
-
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -100,14 +101,14 @@ public class Contato implements Comparable<Contato> {
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void setDataNascimento(int dia, int mes, int ano) {
-        this.dataNascimento = LocalDate.of(ano, mes, dia);
+        this.dataNascimento = of(ano, mes, dia);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override // redefinição ou sobrescrita
     // método redefinido para retornar um representação textual do objeto
     public String toString() {
-        return nome + "\n" + this.getDataNascimentoStrBR() +" ( "+ this.getIdade() + "anos)";
+        return nome + "\n"+ this.getDataNascimentoStrBR() +" ("+ this.getIdade() + " anos)";
     }
 
     @Override
