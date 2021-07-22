@@ -66,7 +66,7 @@ public class ListaContatos{
         return alPlantas;
     }
 
-    // opcao 2
+       // opcao 2
     // usar os metodos getters/setters para interfacear com a classe, escondendo o ArrayList (+segura)
     // assim quem chama não sabe a estrutura de dados usada internamente na classe, apenas conhece sua interface pública
 
