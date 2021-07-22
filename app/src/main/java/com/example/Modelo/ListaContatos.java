@@ -23,15 +23,31 @@ public class ListaContatos{
 
         // populando hardcoded para teste da lista
         // criando três usuários de teste
-        Contato c1 = new Contato ("Fulano de Tal", "fulano@tal.com", 30, 10, 1990);
-        Contato c2 = new Contato ("Ciclano de Tal", "ciclano@tal.com", 8, 7, 1980);
-        Contato c3 = new Contato ("Beltrano de Tal", "beltrano@tal.com", LocalDate.of(2000, 1, 25));
-        Contato c4 = new Contato ("José da Silva", "zezinho@tal.com", LocalDate.of(2020, 1, 25));
+        Contato c1 = new Contato ("Cebolinha", "Tempero", 30, 10, 1990);
+        Contato c2 = new Contato ("Salsinha", "Tempero", 8, 7, 1980);
+        Contato c3 = new Contato ("Hortelã", "Chá", LocalDate.of(2000, 1, 25));
+        Contato c4 = new Contato ("Capim Limão", "Chá", LocalDate.of(2020, 1, 25));
+        Contato c5 = new Contato ("Cebolin", "Tempero", 30, 10, 1990);
+        Contato c6 = new Contato ("Salsin", "Tempero", 8, 7, 1980);
+        Contato c7 = new Contato ("Horte", "Chá", LocalDate.of(2000, 1, 25));
+        Contato c8 = new Contato ("Capim Lim", "Chá", LocalDate.of(2020, 1, 25));
+        Contato c9 = new Contato ("Ceboli", "Tempero", 30, 10, 1990);
+        Contato c10 = new Contato ("Salsi", "Tempero", 8, 7, 1980);
+        Contato c11= new Contato ("Hort", "Chá", LocalDate.of(2000, 1, 25));
+        Contato c12 = new Contato ("Capim Li", "Chá", LocalDate.of(2020, 1, 25));
         // adicionando os usuários no array list
         alContato.add(c1);
         alContato.add(c2);
         alContato.add(c3);
         alContato.add(c4);
+        alContato.add(c5);
+        alContato.add(c6);
+        alContato.add(c7);
+        alContato.add(c8);
+        alContato.add(c9);
+        alContato.add(c10);
+        alContato.add(c11);
+        alContato.add(c12);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)

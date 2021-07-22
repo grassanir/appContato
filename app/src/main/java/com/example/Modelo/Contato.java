@@ -108,7 +108,7 @@ public class Contato implements Comparable<Contato> {
     @Override // redefinição ou sobrescrita
     // método redefinido para retornar um representação textual do objeto
     public String toString() {
-        return nome + "\n"+ this.getDataNascimentoStrBR() +" ("+ this.getIdade() + " anos)";
+        return nome + "\n" + this.getEmail() + "\n" + "Plantado em " + this.getDataNascimentoStrBR() +" ("+ this.getIdade() + " anos)";
     }
 
     @Override

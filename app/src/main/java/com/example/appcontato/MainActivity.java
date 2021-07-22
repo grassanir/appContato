@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Build;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -27,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setTitle("Lista de Plantas");
 
         ListaContatos.getInstance(getApplicationContext()).ordenaNomeAZ();
         alContato = ListaContatos.getInstance(getApplicationContext()).getAlContato();
@@ -44,5 +46,12 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), strContato, Toast.LENGTH_LONG).show();
             }
         });
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        getMenuInflater().inflate(R.menu.searchmenu,menu);
+        return super.onCreateOptionsMenu(menu);
+
     }
 }
