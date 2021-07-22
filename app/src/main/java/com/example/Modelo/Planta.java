@@ -10,43 +10,63 @@ import java.time.format.DateTimeFormatter;
 
 import static java.time.LocalDate.of;
 
-public class Contato implements Comparable<Contato> {
+public class Planta implements Comparable<Planta> {
     // atributos : definir o estado de um objeto (variáveis), o que o objeto sabe
     private String nome;  // private para garantir o encapsulamento
-    private String email;
-    private LocalDate dataNascimento; // classe da API do Java para manipulação de datas
+    private String categoria;
+    private LocalDate dataPlantio; // classe da API do Java para manipulação de datas
+    private LocalDate dataColheita;
+    private String tipoPlantio, origemPlantio, periodoRega, quantidadeAgua, ambiente, estacao, fertilizante;
+
 
     // métodos : definir o comportamento de um objeto (funções), o que o objeto faz
 
     // método construtor : usado para criar uma instância, um objeto de Contato
-    public Contato(String nome) {
+    public Planta(String nome) {
         super();  // chama o construtor da super classe
         this.nome = nome;
     }
 
-    public Contato(String nome, String email) {
+    public Planta(String nome, String categoria) {
         super();  // chama o construtor da super classe
         this.nome = nome;
-        this.email = email;
+        this.categoria = categoria;
     }
 
     // mais de um método como o mesmo NOME mas ASSINATURA diferente => overload ou sobrecarga
     // para aumentar a flexibilidade na criação de instâncias desta classe
-    public Contato(String nome, String email, LocalDate dataNascimento) {
+    public Planta(String nome, String categoria, LocalDate dataPlantio) {
         super();
         this.nome = nome;
-        this.email = email;
-        this.dataNascimento = dataNascimento;
+        this.categoria = categoria;
+        this.dataPlantio = dataPlantio;
+    }
+
+    public Planta(String nome, String categoria, LocalDate dataPlantio, String periodoRega) {
+        super();
+        this.nome = nome;
+        this.categoria = categoria;
+        this.dataPlantio = dataPlantio;
+        this.periodoRega = periodoRega;
     }
 
     // outra opção de construtor
 
     @RequiresApi(api = Build.VERSION_CODES.O)
-    public Contato(String nome, String email, int dia, int mes, int ano) {
+    public Planta(String nome, String categoria, int dia, int mes, int ano) {
         super();
         this.nome = nome;
-        this.email = email;
-        this.dataNascimento = of(ano, mes, dia);
+        this.categoria = categoria;
+        this.dataPlantio = of(ano, mes, dia);
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public Planta(String nome, String categoria, int dia, int mes, int ano,  String periodoRega) {
+        super();
+        this.nome = nome;
+        this.categoria = categoria;
+        this.dataPlantio = of(ano, mes, dia);
+        this.periodoRega = periodoRega;
     }
 
     // os getters e setters funcionam de interface pública para
@@ -64,56 +84,57 @@ public class Contato implements Comparable<Contato> {
         this.nome = nome;
     }
 
-    public String getEmail() {
-        return email;
+    public String getCategoria() {
+        return categoria;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
     }
 
-    public LocalDate getDataNascimento() {
-        return dataNascimento;
+    public LocalDate getDataPlantio() {
+        return dataPlantio;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
-    public String getDataNascimentoStrBR() {
+    public String getDataPlantioStrBR() {
         DateTimeFormatter formatoBR = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        if (this.dataNascimento == null)
+        if (this.dataPlantio == null)
             return "sem data";
-        return this.dataNascimento.format(formatoBR);
+        return this.dataPlantio.format(formatoBR);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public int getIdade() {
         int idade;
-        if (this.dataNascimento == null)
+        if (this.dataPlantio == null)
             return 0;
         LocalDate hoje = LocalDate.now();// pega a data de agora, do sistema
-        Period tempo = Period.between(this.dataNascimento, hoje);
+        Period tempo = Period.between(this.dataPlantio, hoje);
         idade = tempo.getYears();
         return idade;
     }
 
-    public void setDataNascimento(LocalDate dataNascimento) {
-        this.dataNascimento = dataNascimento;
+    public void setDataPlantio(LocalDate dataPlantio) {
+        this.dataPlantio = dataPlantio;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void setDataNascimento(int dia, int mes, int ano) {
-        this.dataNascimento = of(ano, mes, dia);
+        this.dataPlantio = of(ano, mes, dia);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override // redefinição ou sobrescrita
     // método redefinido para retornar um representação textual do objeto
     public String toString() {
-        return nome + "\n" + this.getEmail() + "\n" + "Plantado em " + this.getDataNascimentoStrBR() +" ("+ this.getIdade() + " anos)";
+        return "Nome: " + nome + "\n\n" + "Categoria: " + this.getCategoria() + "\n\n" + "Plantado em " + this.getDataPlantioStrBR() + "\n\n" + "Rega: " + this.periodoRega
+                ;
     }
 
     @Override
-    public int compareTo(Contato contato) {  // A..Z baseado no nome
-        return  this.nome.compareTo(contato.getNome());
+    public int compareTo(Planta planta) {  // A..Z baseado no nome
+        return  this.nome.compareTo(planta.getNome());
     }
 
 }
