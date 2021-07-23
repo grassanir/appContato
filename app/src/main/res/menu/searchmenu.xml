@@ -3,14 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
  <item
-     android:id="@+id/search"
+     android:id="@+id/check"
      android:icon="@drawable/ic_search_black_24dp"
      android:title="Pesquisar"
      app:actionViewClass="android.widget.SearchView"
      app:showAsAction="always" />
 
  <item
-     android:id="@+id/action_sort"
+     android:id="@+id/action_add"
      android:icon="@android:drawable/ic_menu_sort_alphabetically"
      android:orderInCategory="100"
      android:title="Ordenar"

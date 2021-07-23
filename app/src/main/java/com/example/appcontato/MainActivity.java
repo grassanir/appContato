@@ -1,7 +1,6 @@
 package com.example.appcontato;
 
 import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -13,8 +12,6 @@ import android.view.View;
 
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -31,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<Planta> alPlantas;
     ListView lvContatos;
     ArrayAdapter<Planta> aaContato;
-    private FloatingActionButton botao01;
     boolean ordenacao = false;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -39,10 +35,19 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        setTitle("Lista de Plantas");
+        setTitle("ListaPlantas");
 
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
+        FloatingActionButton fab = findViewById(R.id.fab);
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, MainActivity2.class));
+            }
+        });
+
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         ListaContatos.getInstance(getApplicationContext()).ordenaNomeAZ();
         alPlantas = ListaContatos.getInstance(getApplicationContext()).getAlContato();
@@ -56,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(android.widget.AdapterView<?> adapterView, View view, int posicao, long id) {
                 Planta planta = alPlantas.get(posicao);
+                startActivity(new Intent(MainActivity.this, MainActivity2.class));
                 String strContato = planta.getNome();
                 Toast.makeText(getApplicationContext(), strContato, Toast.LENGTH_SHORT).show();
             }
@@ -77,8 +83,9 @@ public class MainActivity extends AppCompatActivity {
 
         switch (id) {
             case R.id.action_settings:
-                startActivity(new Intent (MainActivity.this, DadosContato.class));
-            case R.id.action_sort:  // alterna entre A-Z ou Z-A, conforme o valor da boolean ordenacao
+                startActivity(new Intent (MainActivity.this, MainActivity2.class));
+                return true;
+            case R.id.action_add:  // alterna entre A-Z ou Z-A, conforme o valor da boolean ordenacao
                 if (!ordenacao) {
                     ordenaAscendente();
                     Toast.makeText(getApplicationContext(), "Ordem alfabética ascendente", Toast.LENGTH_SHORT).show();
